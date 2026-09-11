@@ -30,6 +30,7 @@ import {
 } from "@/lib/marketing";
 import { ContentFormDialog } from "@/components/marketing/ContentFormDialog";
 import { ContentDetailDialog } from "@/components/marketing/ContentDetailDialog";
+import { ContentMonthSummary } from "@/components/marketing/ContentMonthSummary";
 import {
   ContentStatusBadge,
   PillarDot,
@@ -367,6 +368,7 @@ function ContentCalendarPage() {
       {isLoading && <p className="text-sm text-muted-foreground">Memuat konten…</p>}
 
       {view === "kalender" && (
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr)_260px]">
         <div className="space-y-4">
           <div className="flex items-center justify-between">
             <Button
@@ -455,6 +457,14 @@ function ContentCalendarPage() {
               </div>
             </div>
           )}
+        </div>
+        <ContentMonthSummary
+          plans={filtered}
+          pillars={pillars}
+          month={cursor.getMonth()}
+          year={cursor.getFullYear()}
+          monthLabel={`${MONTHS[cursor.getMonth()]} ${cursor.getFullYear()}`}
+        />
         </div>
       )}
 
