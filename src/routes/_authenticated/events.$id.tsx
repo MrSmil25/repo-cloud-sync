@@ -29,6 +29,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { EventMarketingTab } from "@/components/marketing/EventMarketingTab";
 import {
   Table,
   TableBody,
@@ -159,7 +160,12 @@ function EventDetailPage() {
           <TabsTrigger value="sponsorship">Sponsorship</TabsTrigger>
           <TabsTrigger value="keuangan">Keuangan</TabsTrigger>
           <TabsTrigger value="rundown">Rundown</TabsTrigger>
+          <TabsTrigger value="konten">Konten &amp; Desain</TabsTrigger>
         </TabsList>
+
+        <TabsContent value="konten" className="pt-4">
+          <EventMarketingTab eventId={event.id} />
+        </TabsContent>
 
         <TabsContent value="overview" className="space-y-4 pt-4">
           <Card>
