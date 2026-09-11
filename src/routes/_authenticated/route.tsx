@@ -40,6 +40,7 @@ import {
   PieChart,
   LifeBuoy,
   SlidersHorizontal,
+  Palette,
   ChevronDown,
   ChevronRight,
 } from "lucide-react";
@@ -131,6 +132,14 @@ const navSections: NavSection[] = [
       { to: "/companies", label: "Perusahaan", icon: Building2 },
       { to: "/pipeline", label: "Pipeline", icon: KanbanSquare },
       { to: "/mous", label: "MoU", icon: FileSignature },
+    ],
+  },
+  {
+    key: "MARKETING",
+    label: "MARKETING",
+    items: [
+      { to: "/content-calendar", label: "Kalender Konten", icon: CalendarDays },
+      { to: "/design-queue", label: "Antrean Desain", icon: Palette },
     ],
   },
   {

@@ -10,6 +10,7 @@ import { canManageCash, fetchMyBills, fetchPendingClaims } from "@/lib/cash";
 import { SupervisorOverview } from "@/components/assignments/SupervisorOverview";
 import { UrgentBanners } from "@/components/announcements/UrgentBanners";
 import { WelcomeGuideCard } from "@/components/WelcomeGuideCard";
+import { MarketingDashboardCards } from "@/components/marketing/MarketingDashboardCards";
 import { countContributionsThisWeek, countUnacknowledgedCoaching, isKadiv } from "@/lib/hr";
 import { countUnacknowledgedWarnings, fetchWarnings } from "@/lib/warnings";
 import { fetchProposals, isEligibleVoter } from "@/lib/proposals";
@@ -235,6 +236,7 @@ function DashboardPage() {
       )}
 
       <UrgentBanners />
+      <MarketingDashboardCards />
       <WelcomeGuideCard />
 
       {myVoteProposals.length > 0 && (
