@@ -38,6 +38,7 @@ import { Route as AuthenticatedMousRouteImport } from './routes/_authenticated/m
 import { Route as AuthenticatedNotificationsRouteImport } from './routes/_authenticated/notifications'
 import { Route as AuthenticatedPipelineRouteImport } from './routes/_authenticated/pipeline'
 import { Route as AuthenticatedProfileRouteImport } from './routes/_authenticated/profile'
+import { Route as AuthenticatedResourcesRouteImport } from './routes/_authenticated/resources'
 import { Route as AuthenticatedTransactionsRouteImport } from './routes/_authenticated/transactions'
 import { Route as AuthenticatedWarningsRouteImport } from './routes/_authenticated/warnings'
 import { Route as AuthenticatedWorkspaceRouteImport } from './routes/_authenticated/workspace'
@@ -54,6 +55,7 @@ import { Route as AuthenticatedMeetingsIdRouteImport } from './routes/_authentic
 import { Route as AuthenticatedReportsBlockersRouteImport } from './routes/_authenticated/reports.blockers'
 import { Route as AuthenticatedReportsMemberRouteImport } from './routes/_authenticated/reports.member'
 import { Route as AuthenticatedReportsWorkloadRouteImport } from './routes/_authenticated/reports.workload'
+import { Route as AuthenticatedResourcesPopularRouteImport } from './routes/_authenticated/resources.popular'
 import { Route as AuthenticatedSettingsOrganizationRouteImport } from './routes/_authenticated/settings.organization'
 import { Route as AuthenticatedSpeakersIndexRouteImport } from './routes/_authenticated/speakers.index'
 import { Route as AuthenticatedSpeakersIdRouteImport } from './routes/_authenticated/speakers.$id'
@@ -220,6 +222,11 @@ const AuthenticatedProfileRoute = AuthenticatedProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedResourcesRoute = AuthenticatedResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedTransactionsRoute =
   AuthenticatedTransactionsRouteImport.update({
     id: '/transactions',
@@ -312,6 +319,12 @@ const AuthenticatedReportsWorkloadRoute =
     path: '/reports/workload',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
+const AuthenticatedResourcesPopularRoute =
+  AuthenticatedResourcesPopularRouteImport.update({
+    id: '/popular',
+    path: '/popular',
+    getParentRoute: () => AuthenticatedResourcesRoute,
+  } as any)
 const AuthenticatedSettingsOrganizationRoute =
   AuthenticatedSettingsOrganizationRouteImport.update({
     id: '/settings/organization',
@@ -395,6 +408,7 @@ export interface FileRoutesByFullPath {
   '/notifications': typeof AuthenticatedNotificationsRoute
   '/pipeline': typeof AuthenticatedPipelineRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/resources': typeof AuthenticatedResourcesRouteWithChildren
   '/transactions': typeof AuthenticatedTransactionsRoute
   '/warnings': typeof AuthenticatedWarningsRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
@@ -407,6 +421,7 @@ export interface FileRoutesByFullPath {
   '/reports/blockers': typeof AuthenticatedReportsBlockersRoute
   '/reports/member': typeof AuthenticatedReportsMemberRoute
   '/reports/workload': typeof AuthenticatedReportsWorkloadRoute
+  '/resources/popular': typeof AuthenticatedResourcesPopularRoute
   '/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
   '/speakers/$id': typeof AuthenticatedSpeakersIdRoute
   '/companies/': typeof AuthenticatedCompaniesIndexRoute
@@ -450,6 +465,7 @@ export interface FileRoutesByTo {
   '/notifications': typeof AuthenticatedNotificationsRoute
   '/pipeline': typeof AuthenticatedPipelineRoute
   '/profile': typeof AuthenticatedProfileRoute
+  '/resources': typeof AuthenticatedResourcesRouteWithChildren
   '/transactions': typeof AuthenticatedTransactionsRoute
   '/warnings': typeof AuthenticatedWarningsRoute
   '/workspace': typeof AuthenticatedWorkspaceRoute
@@ -462,6 +478,7 @@ export interface FileRoutesByTo {
   '/reports/blockers': typeof AuthenticatedReportsBlockersRoute
   '/reports/member': typeof AuthenticatedReportsMemberRoute
   '/reports/workload': typeof AuthenticatedReportsWorkloadRoute
+  '/resources/popular': typeof AuthenticatedResourcesPopularRoute
   '/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
   '/speakers/$id': typeof AuthenticatedSpeakersIdRoute
   '/companies': typeof AuthenticatedCompaniesIndexRoute
@@ -507,6 +524,7 @@ export interface FileRoutesById {
   '/_authenticated/notifications': typeof AuthenticatedNotificationsRoute
   '/_authenticated/pipeline': typeof AuthenticatedPipelineRoute
   '/_authenticated/profile': typeof AuthenticatedProfileRoute
+  '/_authenticated/resources': typeof AuthenticatedResourcesRouteWithChildren
   '/_authenticated/transactions': typeof AuthenticatedTransactionsRoute
   '/_authenticated/warnings': typeof AuthenticatedWarningsRoute
   '/_authenticated/workspace': typeof AuthenticatedWorkspaceRoute
@@ -519,6 +537,7 @@ export interface FileRoutesById {
   '/_authenticated/reports/blockers': typeof AuthenticatedReportsBlockersRoute
   '/_authenticated/reports/member': typeof AuthenticatedReportsMemberRoute
   '/_authenticated/reports/workload': typeof AuthenticatedReportsWorkloadRoute
+  '/_authenticated/resources/popular': typeof AuthenticatedResourcesPopularRoute
   '/_authenticated/settings/organization': typeof AuthenticatedSettingsOrganizationRoute
   '/_authenticated/speakers/$id': typeof AuthenticatedSpeakersIdRoute
   '/_authenticated/companies/': typeof AuthenticatedCompaniesIndexRoute
@@ -564,6 +583,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/pipeline'
     | '/profile'
+    | '/resources'
     | '/transactions'
     | '/warnings'
     | '/workspace'
@@ -576,6 +596,7 @@ export interface FileRouteTypes {
     | '/reports/blockers'
     | '/reports/member'
     | '/reports/workload'
+    | '/resources/popular'
     | '/settings/organization'
     | '/speakers/$id'
     | '/companies/'
@@ -619,6 +640,7 @@ export interface FileRouteTypes {
     | '/notifications'
     | '/pipeline'
     | '/profile'
+    | '/resources'
     | '/transactions'
     | '/warnings'
     | '/workspace'
@@ -631,6 +653,7 @@ export interface FileRouteTypes {
     | '/reports/blockers'
     | '/reports/member'
     | '/reports/workload'
+    | '/resources/popular'
     | '/settings/organization'
     | '/speakers/$id'
     | '/companies'
@@ -675,6 +698,7 @@ export interface FileRouteTypes {
     | '/_authenticated/notifications'
     | '/_authenticated/pipeline'
     | '/_authenticated/profile'
+    | '/_authenticated/resources'
     | '/_authenticated/transactions'
     | '/_authenticated/warnings'
     | '/_authenticated/workspace'
@@ -687,6 +711,7 @@ export interface FileRouteTypes {
     | '/_authenticated/reports/blockers'
     | '/_authenticated/reports/member'
     | '/_authenticated/reports/workload'
+    | '/_authenticated/resources/popular'
     | '/_authenticated/settings/organization'
     | '/_authenticated/speakers/$id'
     | '/_authenticated/companies/'
@@ -916,6 +941,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedProfileRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/resources': {
+      id: '/_authenticated/resources'
+      path: '/resources'
+      fullPath: '/resources'
+      preLoaderRoute: typeof AuthenticatedResourcesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/transactions': {
       id: '/_authenticated/transactions'
       path: '/transactions'
@@ -1028,6 +1060,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedReportsWorkloadRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/resources/popular': {
+      id: '/_authenticated/resources/popular'
+      path: '/popular'
+      fullPath: '/resources/popular'
+      preLoaderRoute: typeof AuthenticatedResourcesPopularRouteImport
+      parentRoute: typeof AuthenticatedResourcesRoute
+    }
     '/_authenticated/settings/organization': {
       id: '/_authenticated/settings/organization'
       path: '/settings/organization'
@@ -1094,6 +1133,20 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedResourcesRouteChildren {
+  AuthenticatedResourcesPopularRoute: typeof AuthenticatedResourcesPopularRoute
+}
+
+const AuthenticatedResourcesRouteChildren: AuthenticatedResourcesRouteChildren =
+  {
+    AuthenticatedResourcesPopularRoute: AuthenticatedResourcesPopularRoute,
+  }
+
+const AuthenticatedResourcesRouteWithChildren =
+  AuthenticatedResourcesRoute._addFileChildren(
+    AuthenticatedResourcesRouteChildren,
+  )
+
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedAnnouncementsRoute: typeof AuthenticatedAnnouncementsRoute
   AuthenticatedBudgetsRoute: typeof AuthenticatedBudgetsRoute
@@ -1118,6 +1171,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedNotificationsRoute: typeof AuthenticatedNotificationsRoute
   AuthenticatedPipelineRoute: typeof AuthenticatedPipelineRoute
   AuthenticatedProfileRoute: typeof AuthenticatedProfileRoute
+  AuthenticatedResourcesRoute: typeof AuthenticatedResourcesRouteWithChildren
   AuthenticatedTransactionsRoute: typeof AuthenticatedTransactionsRoute
   AuthenticatedWarningsRoute: typeof AuthenticatedWarningsRoute
   AuthenticatedWorkspaceRoute: typeof AuthenticatedWorkspaceRoute
@@ -1169,6 +1223,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedNotificationsRoute: AuthenticatedNotificationsRoute,
   AuthenticatedPipelineRoute: AuthenticatedPipelineRoute,
   AuthenticatedProfileRoute: AuthenticatedProfileRoute,
+  AuthenticatedResourcesRoute: AuthenticatedResourcesRouteWithChildren,
   AuthenticatedTransactionsRoute: AuthenticatedTransactionsRoute,
   AuthenticatedWarningsRoute: AuthenticatedWarningsRoute,
   AuthenticatedWorkspaceRoute: AuthenticatedWorkspaceRoute,
